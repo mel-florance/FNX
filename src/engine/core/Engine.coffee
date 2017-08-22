@@ -1,6 +1,6 @@
-Window = require './Window.coffee'
+Window = require './../rendering/Window.coffee'
 Input = require './Input.coffee'
-RenderUtil = require './RenderUtil.coffee'
+RenderUtil = require './../rendering/RenderUtil.coffee'
 
 class Engine extends Window
     constructor: (container) ->

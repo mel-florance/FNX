@@ -1,4 +1,4 @@
-GameLoop = require './GameLoop.coffee'
+GameLoop = require './../core/GameLoop.coffee'
 
 class Window extends GameLoop
     constructor: (container) ->

@@ -1,6 +1,6 @@
-Http = require './Http.coffee'
+Http = require './../network/Http.coffee'
 
-class AssetsManager
+class Assets
     shader_dir: '../res/shaders',
 
     constructor: ->
@@ -22,4 +22,4 @@ class AssetsManager
             .catch (err) =>
                 rej err
 
-module.exports = AssetsManager
+module.exports = Assets

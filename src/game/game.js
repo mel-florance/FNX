@@ -2,8 +2,8 @@ var engine = new FNX.Engine('render');
 
 var matrix  = new FNX.Mat4();
 var mesh    = new FNX.Mesh();
+var assets  = new FNX.Assets();
 mesh.shader = new FNX.Shader();
-var assets  = new FNX.AssetsManager();
 
 mesh.addVertices([
     new FNX.Vertex(new FNX.Vec3(-1, -1, 0)),
