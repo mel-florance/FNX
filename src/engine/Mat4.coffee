@@ -4,7 +4,7 @@ class Mat4
         @m[i] = (if i % 5 == 0 then 1 else 0) for i in [0 .. 15]
         @
     get: (x, y) -> @m[x][y]
-    set: (x, y, v) -> @[x][y] = v
+    set: (x, y, v) -> @m[x][y] = v
 
     mul: (m) ->
         res = new Mat4()
