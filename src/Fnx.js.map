@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "Fnx.js",
+  "sourceRoot": "",
+  "sources": [
+    "Fnx.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,IAAA;;AAAA,GAAA,GACI;EAAA,MAAA,EAAQ,OAAA,CAAQ,iBAAR,CAAR;EACA,MAAA,EAAQ,OAAA,CAAQ,iBAAR,CADR"
+}
