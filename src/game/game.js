@@ -26,7 +26,7 @@ assets.loadShader('basic').then(resource =>
 
         if(mesh.shader.compiled) {
             mesh.shader.bind();
-            transform.setTranslation(Math.sin(t), 0, 0);
+            transform.setTranslation(Math.sin(t), Math.cos(t), 0);
             mesh.shader.setUniformMat4('transform', transform.getTransformation());
             mesh.draw();
         }

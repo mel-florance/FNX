@@ -39,7 +39,6 @@ class Shader
         gl.uniform3f @uniforms[name], value.x, value.y, value.z
 
     setUniformMat4: (name, value) ->
-        console.log new Float32Array(value)
         gl.uniformMatrix4fv @uniforms[name], gl.FALSE, new Float32Array(value)
 
     setUniformI: (name, value) ->
