@@ -16,14 +16,22 @@ assets.loadShader('basic').then(resource =>
     mesh.shader.addVertexShader(resource.vertex);
     mesh.shader.addFragmentShader(resource.fragment);
     mesh.shader.compile();
+    mesh.shader.addUniform('transform');
+
+    let transform = new FNX.Transform();
+    let t = 0;
 
     engine.run(() => {
+        t += engine.deltaTime;
+
         if(mesh.shader.compiled) {
             mesh.shader.bind();
+            transform.setTranslation(Math.sin(t), 0, 0);
+            mesh.shader.setUniformMat4('transform', transform.getTransformation());
             mesh.draw();
         }
 
         if(engine.input.getKey(13))
             console.log('pressed')
     });
-})
+});
