@@ -13,3 +13,4 @@ module.exports =
     Shader     : require './engine/rendering/Shader.coffee'
     RenderUtil : require './engine/rendering/RenderUtil.coffee'
     Assets     : require './engine/core/Assets.coffee'
+    Transform  : require './engine/maths/Transform.coffee'
