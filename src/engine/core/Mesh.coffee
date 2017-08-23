@@ -1,4 +1,5 @@
 Vertex = require './Vertex.coffee'
+Util = require './Util.coffee'
 
 class Mesh
     size: 0
@@ -7,16 +8,9 @@ class Mesh
     constructor: ->
         @vbo = gl.createBuffer()
 
-    createVertexBuffer: (vertices, data = []) ->
-        vertices.map (v) =>
-            data.push v.position.x
-            data.push v.position.y
-            data.push v.position.z
-        new Float32Array data
-
     addVertices: (vertices) ->
         @size = vertices.length
-        buffer = @createVertexBuffer vertices
+        buffer = Util.createVertexBuffer vertices
         gl.bindBuffer gl.ARRAY_BUFFER, @vbo
         gl.bufferData gl.ARRAY_BUFFER, buffer, gl.STATIC_DRAW
 
