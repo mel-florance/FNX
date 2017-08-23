@@ -2,7 +2,7 @@ precision highp float;
 attribute highp vec3 position;
 varying vec4 color;
 
-uniform float transform;
+uniform mat4 transform;
 
 void main()
 {
