@@ -1,3 +1,5 @@
+Util = require '../core/Util.coffee'
+
 class Shader
     program: 0
     compiled: false
@@ -30,14 +32,15 @@ class Shader
 
         if location == -1
             console.log "Shader error: Could not find uniform #{name}"
-
-        @uniforms[name] = location
+        else
+            @uniforms[name] = location
 
     setUniformVec3: (name, value) ->
         gl.uniform3f @uniforms[name], value.x, value.y, value.z
 
     setUniformMat4: (name, value) ->
-        gl.uniformMatrix4fv @uniforms[name], value.m
+        console.log new Float32Array(value)
+        gl.uniformMatrix4fv @uniforms[name], gl.FALSE, new Float32Array(value)
 
     setUniformI: (name, value) ->
         gl.uniform1i @uniforms[name], value
