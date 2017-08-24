@@ -25,8 +25,9 @@ assets.loadShader('basic').then(resource =>
         t += engine.deltaTime;
 
         if(mesh.shader.compiled) {
+            // transform.setTranslation(Math.sin(t), Math.cos(t), 0);
+            transform.setRotation(Math.sin(t), Math.sin(t), Math.sin(t));
             mesh.shader.bind();
-            transform.setTranslation(Math.sin(t), Math.cos(t), 0);
             mesh.shader.setUniformMat4('transform', transform.getTransformation());
             mesh.draw();
         }
