@@ -1,7 +1,8 @@
 Http = require './../network/Http.coffee'
 
 class Assets
-    shader_dir: '../res/shaders',
+    shaders_dir: '../res/shaders',
+    models_dir: '../res/models',
 
     constructor: ->
 
@@ -14,12 +15,32 @@ class Assets
     loadShader: (name) ->
         new Promise (res, rej) =>
             Promise.all([
-                @getFile("#{@shader_dir}/#{name}.vert"),
-                @getFile("#{@shader_dir}/#{name}.frag")
+                @getFile("#{@shaders_dir}/#{name}.vert"),
+                @getFile("#{@shaders_dir}/#{name}.frag")
             ])
             .then (shaders) =>
                 res {vertex: shaders[0], fragment: shaders[1]}
             .catch (err) =>
                 rej err
+
+    loadMesh: (name) ->
+        new Promise (res, rej) =>
+            @getFile("#{@models_dir}/#{name}.obj").then (data) =>
+                vertices = []
+                indices = []
+
+                data.split('\n').forEach (line) =>
+                    tokens = line.split ' '
+
+                    if tokens[0] == 'v'
+                        vertices.push new FNX.Vertex([tokens[1], tokens[2], tokens[3]])
+                    else if tokens[0] == 'f'
+                        indices.push parseInt(tokens[1]) - 1
+                        indices.push parseInt(tokens[2]) - 1
+                        indices.push parseInt(tokens[3]) - 1
+
+                mesh = new FNX.Mesh()
+                mesh.addVertices vertices, indices
+                res mesh
 
 module.exports = Assets
