@@ -1,19 +1,24 @@
+const dev = process.env.NODE_ENV == 'dev';
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+let config = {
     entry: './src/Fnx.coffee',
     output: {
         path: path.resolve('./dist'),
         library: 'FNX',
         filename: 'fnx.js'
     },
-    devtool: "source-map",
     module: {
         rules: [
             {
                 test: /\.coffee$/,
                 use: 'coffee-loader'
+            },
+            {
+                test: /\.js$/,
+                use: 'babel-loader'
             }
         ]
     },
@@ -30,3 +35,14 @@ module.exports = {
         ])
     ]
 };
+
+if(!dev)
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false }
+        })
+    );
+else
+    config.devtool = 'source-map';
+
+module.exports = config;
