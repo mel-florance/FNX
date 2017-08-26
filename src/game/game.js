@@ -16,14 +16,16 @@ assets.loadMesh('box').then(mesh =>
         let transform = new FNX.Transform();
         transform.setProjection(70, engine.canvas.width, engine.canvas.height, 0.1, 100);
         let t = 0;
+        let s = 0;
 
         engine.run(() => {
             t += engine.deltaTime;
+            s = Math.sin(t);
 
             if(mesh.shader.compiled) {
-                transform.translate([Math.sin(t), 0, -5]);
-                transform.scale([Math.sin(t),Math.sin(t),Math.sin(t)]);
-                transform.rotate(Math.sin(t) * 2 * Math.PI, [0,1,1]);
+                transform.translate([s, 0, -5]);
+                transform.scale([s, s, s]);
+                transform.rotate(s * 2 * Math.PI, [0,1,1]);
                 mesh.shader.bind();
                 mesh.shader.setUniformMat4('transform', transform.getProjectedTransform());
                 mesh.draw();
