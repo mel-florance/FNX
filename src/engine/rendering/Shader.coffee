@@ -36,10 +36,10 @@ class Shader
             @uniforms[name] = location
 
     setUniformVec3: (name, value) ->
-        gl.uniform3f @uniforms[name], value.x, value.y, value.z
+        gl.uniform3f @uniforms[name], value[0], value[1], value[2]
 
     setUniformMat4: (name, value) ->
-        gl.uniformMatrix4fv @uniforms[name], gl.FALSE, new Float32Array(value.m)
+        gl.uniformMatrix4fv @uniforms[name], gl.FALSE, value
 
     setUniformI: (name, value) ->
         gl.uniform1i @uniforms[name], value
