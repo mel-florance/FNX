@@ -4,7 +4,6 @@ module.exports =
 
     initGraphics: ->
         gl.clearColor 0, 0, 0, 1
-        gl.enable gl.CULL_FACE
         gl.enable gl.DEPTH_TEST
         gl.cullFace gl.BACK
         gl.frontFace gl.CCW
