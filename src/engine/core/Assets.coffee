@@ -35,9 +35,7 @@ class Assets
                     if tokens[0] == 'v'
                         vertices.push new FNX.Vertex([tokens[1], tokens[2], tokens[3]])
                     else if tokens[0] == 'f'
-                        indices.push parseInt(tokens[1]) - 1
-                        indices.push parseInt(tokens[2]) - 1
-                        indices.push parseInt(tokens[3]) - 1
+                        indices.push parseInt(tokens[i]) - 1 for i in [1 .. 3]
 
                 mesh = new FNX.Mesh()
                 mesh.addVertices vertices, indices
