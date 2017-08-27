@@ -5,8 +5,9 @@
   "author": "Mel Florance",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --progress --watch --colors",
-    "prod": "webpack --progress --watch --colors",
+    "doc": "codo --name Fnx ./src",
+    "dev": "SET NODE_ENV=dev webpack --progress --watch --colors",
+    "prod": "webpack --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,6 +24,7 @@
     "coffee-loader": "^0.7.3",
     "coffee-script": "^1.12.7",
     "copy-webpack-plugin": "^4.0.1",
+    "jsdoc": "^3.5.4",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5"
   },
