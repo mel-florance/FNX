@@ -2,7 +2,7 @@ var engine = new FNX.Engine('render');
 var assets = new FNX.Assets();
 
 Promise.all([
-    assets.loadMesh('box'),
+    assets.loadMesh('monkey'),
     assets.loadShader('basic')
 ])
 .then(data => {
