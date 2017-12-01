@@ -35,22 +35,45 @@
       </table>
       <h2>Variables Summary</h2>
       <dl class='constants'>
-  <dt id='module.exports-variable'>
-    module.exports
+  <dt id='RenderUtil-variable'>
+    RenderUtil
     =
   </dt>
   <dd>
     <pre><code class='coffeescript'>{
+  clearColor: [0, 0, 0, 0],
   clearScreen: function() {
     return gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
   },
+  setClearColor: function(r, g, b, a) {
+    if (r == null) {
+      r = 0;
+    }
+    if (g == null) {
+      g = 0;
+    }
+    if (b == null) {
+      b = 0;
+    }
+    if (a == null) {
+      a = 0;
+    }
+    return gl.clearColor(r, g, b, a);
+  },
   initGraphics: function() {
-    gl.clearColor(0, 0, 0, 1);
     gl.enable(gl.DEPTH_TEST);
     gl.cullFace(gl.BACK);
     return gl.frontFace(gl.CCW);
   }
 }</code></pre>
+    
+  </dd>
+  <dt id='module.exports-variable'>
+    module.exports
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>RenderUtil</code></pre>
     
   </dd>
 </dl>

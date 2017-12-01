@@ -64,7 +64,14 @@ class Shader
     # @param [array] value of a vector 3
     # @return [void]
     setUniformVec3: (name, value) ->
-        gl.uniform3f @uniforms[name], value[0], value[1], value[2]
+        gl.uniform3fv @uniforms[name], value
+
+    # Set the value of a uniform vector 4
+    # @param [string] name of the uniform
+    # @param [array] value of a vector 4
+    # @return [void]
+    setUniformVec4: (name, value) ->
+        gl.uniform4fv @uniforms[name], value
 
     # Set the value of a uniform matrix 4
     # @param [string] name of the uniform
@@ -81,7 +88,7 @@ class Shader
         gl.uniform1i @uniforms[name], value
 
     # Set the value of a uniform float value
-    # @param [string] name of the uniform
+    # @param [string] name of the uniform-
     # @param [float] value of an float
     # @return [void]
     setUniformF: (name, value) ->

@@ -8,18 +8,12 @@ let config = {
     output: {
         path: path.resolve('./dist'),
         library: 'FNX',
-        filename: 'fnx.js'
+        filename: `fnx.js`
     },
     module: {
         rules: [
-            {
-                test: /\.coffee$/,
-                use: 'coffee-loader'
-            },
-            {
-                test: /\.js$/,
-                use: 'babel-loader'
-            }
+            {test: /\.coffee$/, use: 'coffee-loader'},
+            {test: /\.js$/, use: 'babel-loader'}
         ]
     },
     plugins: [
@@ -39,7 +33,9 @@ let config = {
 if(!dev)
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false }
+            compress: {
+                warnings: false
+            }
         })
     );
 else

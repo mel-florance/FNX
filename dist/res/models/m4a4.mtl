@@ -1,0 +1,16 @@
+# Blender MTL File: 'm4a4.blend'
+# Material Count: 1
+
+newmtl m4a4
+Ns 17.647059
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:\wamp\www\csgozero\resources\weapons\Rifles\M4 Carbine\Textures\M4_Albedo.jpg
+map_Bump C:\\wamp\\www\\csgozero\\resources\\weapons\\Rifles\\M4 Carbine\\Textures\\M4_Normal.jpg
+map_Ks C:\\wamp\\www\\csgozero\\resources\\weapons\\Rifles\\M4 Carbine\\Textures\\M4_Metallic.jpg
+map_Ns C:\\wamp\\www\\csgozero\\resources\\weapons\\Rifles\\M4 Carbine\\Textures\\M4_Metallic.jpg

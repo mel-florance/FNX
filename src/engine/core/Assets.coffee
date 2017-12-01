@@ -1,16 +1,28 @@
 Http = require './../network/Http.coffee'
 
 class Assets
+    textures: {},
+
     shaders_dir: '../res/shaders',
+    textures_dir: '../res/textures',
     models_dir: '../res/models',
 
-    constructor: ->
+    constructor: (scene) ->
+        @scene = scene
 
     getFile: (url) ->
         new Promise (res, rej) =>
             Http.get url: url, (err, data) =>
                 rej err if err
                 res data if !err
+
+    loadImage: (img) ->
+        new Promise (res) =>
+            image = new Image()
+            image.src = "#{@textures_dir}/#{img}"
+            image.onload = =>
+                @textures[img] = {name: img, image: image}
+                res @textures[img]
 
     loadShader: (name) ->
         new Promise (res, rej) =>
@@ -19,26 +31,19 @@ class Assets
                 @getFile("#{@shaders_dir}/#{name}.frag")
             ])
             .then (shaders) =>
-                res {vertex: shaders[0], fragment: shaders[1]}
+                shader = {vertex: shaders[0], fragment: shaders[1]}
+                @scene.shaders[name] = shader
+                res shader
             .catch (err) =>
                 rej err
 
     loadMesh: (name) ->
         new Promise (res, rej) =>
             @getFile("#{@models_dir}/#{name}.obj").then (data) =>
-                vertices = []
-                indices = []
-
-                data.split('\n').forEach (line) =>
-                    tokens = line.split ' '
-
-                    if tokens[0] == 'v'
-                        vertices.push new FNX.Vertex([tokens[1], tokens[2], tokens[3]])
-                    else if tokens[0] == 'f'
-                        indices.push parseInt(tokens[i]) - 1 for i in [1 .. 3]
-
-                mesh = new FNX.Mesh()
-                mesh.addVertices vertices, indices
+                parsed = new FNX.OBJ.Mesh data
+                FNX.OBJ.initMeshBuffers gl, parsed
+                mesh = new FNX.Mesh name, parsed
+                @scene.meshes[name] = mesh
                 res mesh
 
 module.exports = Assets

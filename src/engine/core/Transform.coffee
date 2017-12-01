@@ -1,45 +1,21 @@
-glm = require 'gl-matrix'
-
-class Transform
-    zNear: 0.01,
-    zFar: 1000,
-    width: 0,
-    height: 0,
-    fov: 70
-
-    constructor: ->
-        @identity = glm.mat4.identity new Float32Array(16)
-        @translation = glm.mat4.identity new Float32Array(16)
-        @rotation = glm.mat4.identity new Float32Array(16)
-        @scaling = glm.mat4.identity new Float32Array(16)
+module.exports = class Transform
+    constructor: () ->
+        @identity = FNX.glm.mat4.create()
+        @translation = FNX.glm.mat4.create()
+        @rotation = FNX.glm.mat4.create()
+        @scaling = FNX.glm.mat4.create()
 
     getTransformation: ->
-       r = glm.mat4.identity new Float32Array(16)
-       glm.mat4.mul r, @scaling, r
-       glm.mat4.mul r, @rotation, r
-       glm.mat4.mul r, @translation, r
+        transform = FNX.glm.mat4.create()
+        FNX.glm.mat4.mul transform, @scaling, transform
+        FNX.glm.mat4.mul transform, @rotation, transform
+        FNX.glm.mat4.mul transform, @translation, transform
 
-    getProjectedTransform: ->
-        res = glm.mat4.identity new Float32Array(16)
-        proj = glm.mat4.identity new Float32Array(16)
-        glm.mat4.perspective proj, @fov, @width / @height, @zNear, @zFar
-        transform = @getTransformation()
-        glm.mat4.mul res, proj, transform
-
-    setProjection: (fov, width, height, zNear, zFar)->
-        @fov = fov
-        @width = width
-        @height = height
-        @zNear = zNear
-        @zFar = zFar
-
-    translate: (v = [0, 0, 0]) ->
-        glm.mat4.translate @translation, @identity, v
+    translate: (direction = [0, 0, 0]) ->
+        FNX.glm.mat4.translate @translation, @identity, direction
 
     rotate: (angle, axes = [1, 1, 1]) ->
-        glm.mat4.rotate @rotation, @identity, angle, axes
+        FNX.glm.mat4.rotate @rotation, @identity, angle, axes
 
     scale: (scale = [1, 1, 1]) ->
-        glm.mat4.scale @scaling, @identity, scale
-
-module.exports = Transform
+        FNX.glm.mat4.scale @scaling, @identity, scale
