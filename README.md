@@ -22,7 +22,8 @@ Files are available in the created folder "dist/" after running the command for 
 
 ## Built With
 
-* [WebGL](https://www.khronos.org/webgl/) - The main graphic library
+* [glmatrix](http://glmatrix.net/) - Javascript Matrix and Vector library for High Performance WebGL apps
+* [WebGL](https://www.khronos.org/webgl/) - The main graphic api
 * [NPM](https://www.npmjs.com/) - Dependency Management
 * [Coffee-Script](http://coffeescript.org/) - Main language used
 
