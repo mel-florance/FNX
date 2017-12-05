@@ -5,6 +5,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let config = {
     entry: './src/Fnx.coffee',
+    target: 'web',
+    node: {
+        global: true,
+        Buffer: true
+    },
     output: {
         path: path.resolve('./dist'),
         library: 'FNX',

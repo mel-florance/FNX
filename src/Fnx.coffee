@@ -1,5 +1,6 @@
-module.exports =
+global.Buffer = global.Buffer || require('buffer').Buffer
 
+module.exports =
     Engine     : require './engine/core/Engine.coffee'
     GameLoop   : require './engine/core/GameLoop.coffee'
     Mesh       : require './engine/mesh/Mesh.coffee'
@@ -8,8 +9,8 @@ module.exports =
     Assets     : require './engine/core/Assets.coffee'
     Transform  : require './engine/core/Transform.coffee'
     Scene      : require './engine/core/Scene.coffee'
-    Camera     : require './engine/cameras/Camera.coffee'
-    FlyingCamera : require './engine/cameras/FlyingCamera.coffee'
+    Camera     : require './engine/camera/Camera.coffee'
+    FlyingCamera : require './engine/camera/FlyingCamera.coffee'
     GameObject : require './engine/core/Actor.coffee'
 
     Window     : require './engine/rendering/Window.coffee'
@@ -18,6 +19,10 @@ module.exports =
     Renderer   : require './engine/rendering/Renderer.coffee'
     Material   : require './engine/rendering/Material.coffee'
     BasicMaterial : require './engine/rendering/BasicMaterial.coffee'
+
+    Light : require './engine/lighting/Light.coffee'
+    PointLight : require './engine/lighting/PointLight.coffee'
+    DirectionalLight : require './engine/lighting/DirectionalLight.coffee'
 
     Http       : require './engine/network/Http.coffee'
     glm        : require 'gl-matrix'

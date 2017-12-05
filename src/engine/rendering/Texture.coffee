@@ -1,4 +1,5 @@
 class Texture
+    MAX_SIZE: null
     constructor: (scene, data) ->
         @id = null
         @scene = scene

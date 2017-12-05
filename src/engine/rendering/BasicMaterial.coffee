@@ -26,5 +26,4 @@ module.exports = class BasicMaterial extends Material
         @shader.setUniformF 'shininess', 50
         @shader.setUniformF 'reflectivity', 0.5
 
-        scene.materials.push(this)
         @

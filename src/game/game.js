@@ -6,6 +6,7 @@ var assets = new FNX.Assets(scene);
 const fps = document.querySelector('.fps');
 
 Promise.all([
+    // assets.loadBsp('aim_map'),
     assets.loadImage('ak47_diffuse.jpg'),
     assets.loadImage('m4a4_diffuse.png'),
     assets.loadImage('glock_diffuse.jpg'),
@@ -37,7 +38,9 @@ Promise.all([
     setInterval(() => {
         fps.textContent = engine.fps + ' fps'
     }, 1000);
+
     engine.input.pointerLock();
+
     engine.run(() => {
 
         angle += 0.005;
@@ -52,7 +55,6 @@ Promise.all([
         box.transform.scale([6, 6, 6]);
         box.transform.rotate(angle, [0, 1, 0]);
         box.transform.translate([5, 0, -6]);
-
 
         engine.render();
     });

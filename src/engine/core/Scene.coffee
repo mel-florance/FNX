@@ -2,15 +2,16 @@ class Scene
     constructor: (name, engine) ->
         @name = name
         @engine = engine
+
         @meshes = {}
         @shaders = {}
         @materials = []
         @textures = {}
-        @activeCamera = null
+        @lights = []
 
         @ambientColor = [0.15, 0.15, 0.15];
-
         @texturesIndex = -1
+        @activeCamera = null
 
         @setClearColor()
         @engine.addScene this

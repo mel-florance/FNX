@@ -23,6 +23,8 @@ module.exports = class Material
             @shader.setUniformMat4 'mViewInverse', FNX.glm.mat4.invert(@scene.activeCamera.viewMatrix, @scene.activeCamera.viewMatrix)
             @shader.setUniformMat4 'mProj', @scene.activeCamera.projMatrix
 
+        @scene.materials.push(this)
+
     setDiffuseTexture: (texture) ->
         @diffuseTexture = texture
 

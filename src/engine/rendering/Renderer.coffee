@@ -1,5 +1,6 @@
 class Renderer
     constructor: ->
+        FNX.Texture.MAX_SIZE = gl.getParameter gl.MAX_TEXTURE_SIZE
         @
 
     init: ->
